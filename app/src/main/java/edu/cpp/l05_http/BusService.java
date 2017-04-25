@@ -12,10 +12,6 @@ import retrofit2.http.GET;
 public interface BusService {
 
     @GET("/Route/3164/Vehicles")
-    Call<List<RouteInfo>> getRouteAVehicles();
-
-    @GET("/Route/4512/Vehicles")
-    Call<List<RouteInfo>> getRouteBVehicles();
-
+    Call<List<RouteInfo>> getRouteVehicles();
 
 }

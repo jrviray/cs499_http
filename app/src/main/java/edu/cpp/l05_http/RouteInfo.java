@@ -72,6 +72,6 @@ public class RouteInfo {
     }
 
     public String toString() {
-        return "Id: " + id + ", " + "Route: " + routeId + ", " + "Lat: " + latitude + ", Lon: " + longitude;
+        return "Id: " + id + ", " + "Lat: " + latitude + ", Lon: " + longitude;
     }
 }

@@ -48,7 +48,7 @@ public class NewMainActivity extends Activity {
 
     @OnClick(R.id.getBusInfoButton)
     void onGetBusInfoButtonClick() {
-        Call<List<RouteInfo>> routeInfoCall = service.getRouteBVehicles();
+        Call<List<RouteInfo>> routeInfoCall = service.getRouteVehicles();
         routeInfoCall.enqueue(new Callback<List<RouteInfo>>() {
             @Override
             public void onResponse(Call<List<RouteInfo>> call, Response<List<RouteInfo>> response) {

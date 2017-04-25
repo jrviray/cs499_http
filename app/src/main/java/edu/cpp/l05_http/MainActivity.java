@@ -3,7 +3,6 @@ package edu.cpp.l05_http;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -47,18 +46,11 @@ public class MainActivity extends AppCompatActivity {
             protected Void doInBackground(Void... voids) {
                 try {
                     URL url = new URL("https://broncoshuttle.com/Route/3164/Vehicles");
-                    HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                    HttpURLConnection httpURLConnection =
+                            (HttpURLConnection) url.openConnection();
                     InputStream inputStream = httpURLConnection.getInputStream();
-                    try (Reader reader = new BufferedReader(new InputStreamReader(inputStream, Charset.forName(StandardCharsets.UTF_8.name())))) {
-                        int c = 0;
-                        while ((c = reader.read()) != -1) {
-                            textBuilder.append((char) c);
-                        }
-                    }
-                    url = new URL("https://broncoshuttle.com/Route/4512/Vehicles");
-                    httpURLConnection = (HttpURLConnection) url.openConnection();
-                    inputStream = httpURLConnection.getInputStream();
-                    try (Reader reader = new BufferedReader(new InputStreamReader(inputStream, Charset.forName(StandardCharsets.UTF_8.name())))) {
+                    try (Reader reader = new BufferedReader(new InputStreamReader
+                            (inputStream, Charset.forName(StandardCharsets.UTF_8.name())))) {
                         int c = 0;
                         while ((c = reader.read()) != -1) {
                             textBuilder.append((char) c);
@@ -82,13 +74,13 @@ public class MainActivity extends AppCompatActivity {
                     List<RouteInfo> routes = objectMapper.readValue(responseStr, type);
                     ArrayAdapter<RouteInfo> arrayAdapter = new ArrayAdapter<RouteInfo>(MainActivity.this,android.R.layout.simple_list_item_1,routes);
                     busListView.setAdapter(arrayAdapter);
+
                     //busInfoTextView.setText(routes.get(0).getLatitude() + ", " + routes.get(0).getLongitude());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         };
-
 
         getBusInfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
